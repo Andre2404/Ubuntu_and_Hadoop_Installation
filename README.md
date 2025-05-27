@@ -13,6 +13,10 @@ Tambahkan User Hadoop (Opsional)
 
 ```bash
 sudo adduser hadoop
+```
+jika already exist berarti berhasil
+
+```bash
 sudo usermod -aG sudo hadoop
 ```
 
