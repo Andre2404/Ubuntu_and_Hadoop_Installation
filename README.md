@@ -9,13 +9,13 @@ sudo apt install openjdk-11-jdk -y
 java -version
 ```
 
-Tambahkan User Hadoop (Opsional)
+Tambahkan User Hadoop (Opsional), jika already exist berarti berhasil
 
 ```bash
 sudo adduser hadoop
 ```
-jika already exist berarti berhasil
 
+nambahin user hadoop ke grup sudo supaya dia bisa pakai hak akses root (sudo).
 ```bash
 sudo usermod -aG sudo hadoop
 ```
