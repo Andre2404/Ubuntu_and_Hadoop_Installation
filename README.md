@@ -21,7 +21,7 @@ Login sebagai user hadoop:
 su - hadoop
 ```
 
-Setup SSH Tanpa Password (di Master)
+# Setup SSH Tanpa Password (di Master)
 
 ```bash
 ssh-keygen -t rsa -P ""
@@ -36,7 +36,7 @@ ssh hadoop@slave1_ip
 ssh hadoop@slave2_ip
 ```
 
-Download dan Ekstrak Hadoop 3.3.6 di Semua Node
+# Download dan Ekstrak Hadoop 3.3.6 di Semua Node
 
 ```bash
 wget https://archive.apache.org/dist/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
@@ -44,7 +44,7 @@ tar -xvf hadoop-3.3.6.tar.gz
 sudo mv hadoop-3.3.6 /usr/local/hadoop
 ```
 
-Konfigurasi Hadoop Environment
+# Konfigurasi Hadoop Environment
 
 ```bash
 nano ~/.bashrc
@@ -130,6 +130,33 @@ Isi dengan:
 ```bash
 slave1_hostname
 slave2_hostname
+```
+
+Copy Konfigurasi Hadoop ke Semua Slave
+```bash
+scp -r $HADOOP_HOME/etc/hadoop hadoop@slave1_ip:/usr/local/hadoop/etc/
+scp -r $HADOOP_HOME/etc/hadoop hadoop@slave2_ip:/usr/local/hadoop/etc/
+```
+Format Namenode (di Master)
+```bash
+hdfs namenode -format
+```
+Start Hadoop Cluster
+```bash
+start-dfs.sh
+start-yarn.sh
+```
+# Verifikasi Akses Web UI
+```bash
+HDFS UI: http://master_ip:9870
+YARN UI: http://master_ip:8088
+```
+
+Tes SSH dan Hadoop Version
+```bash
+ssh slave1_hostname
+ssh slave2_hostname
+hadoop version
 ```
 
 
